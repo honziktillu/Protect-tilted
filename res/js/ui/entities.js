@@ -53,6 +53,20 @@ export class Enemy {
   move() {
     this.position.x += this.velocity.x;
   }
+
+  detectCollision(mouse) {
+    if (
+      this.position.x < mouse.x + 5 &&
+      this.position.x + this.size.width > mouse.x &&
+      this.position.y < mouse.y + 5 &&
+      this.position.y + this.size.height > mouse.y
+    ) {
+      // Collision detected!
+      this.position.x = -50;
+      return true;
+    }
+    return false;
+  }
 }
 
 //const myEnemy = new Enemy("Enemy 1", 100, 12); //vytvoreni kopie od šablony - objekt(instance)

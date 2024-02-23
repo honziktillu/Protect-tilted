@@ -16,6 +16,9 @@ document.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
   mouse.x = ((e.clientX - rect.left) / (rect.right - rect.left)) * canvas.width;
   mouse.y = ((e.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height;
+  for (const enemy of enemies) {
+    if (enemy.detectCollision(mouse)) break;
+  }
 });
 
 const enemies = [];
